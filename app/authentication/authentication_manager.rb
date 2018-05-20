@@ -14,7 +14,8 @@ class AuthenticationManager
 
   def current_user
     return nil unless decoded_auth_token.present?
-    @current_user ||= User.find_by(id: decoded_auth_token[:user_id])
+    # decoded_auth_token.first[0].to_sym was needed after implementing sti on users
+    @current_user ||= User.find_by(id: decoded_auth_token[decoded_auth_token.first[0].to_sym])
   end
 
   def authenticate_request

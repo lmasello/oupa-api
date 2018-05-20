@@ -1,0 +1,2 @@
+class ElderlyUser < User
+end

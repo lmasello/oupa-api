@@ -1,0 +1,2 @@
+class AssistantUser < User
+end

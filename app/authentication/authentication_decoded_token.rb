@@ -6,7 +6,8 @@ class AuthenticationDecodedToken < HashWithIndifferentAccess
 
   def valid_verification_code?
     return true unless self[:verification_code].present?
-    User.find(self[:user_id]).verification_code == self[:verification_code]
+    # self.first[0].to_sym was needed after implementing sti on users
+    User.find(self[self.first[0].to_sym]).verification_code == self[:verification_code]
   end
 
   def warning_expiration_date_reached?

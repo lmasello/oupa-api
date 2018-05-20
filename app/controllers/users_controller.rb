@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    return render json: { errors: 'Incorrect user type' }, status: :bad_request unless correct_type
     user = User.new(user_params)
     if user.save
       token_data = AuthenticableEntity.generate_access_token(user)
@@ -24,6 +25,11 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation, :type)
+  end
+
+  def correct_type
+    return true if !user_params[:type].present?
+    User.types.keys.include? user_params[:type]
   end
 end
