@@ -1,4 +1,6 @@
 # README
+https://gorails.com/setup/ubuntu/16.04
+
 ### 1- Installing Ruby
 
 - Clone the repository by running `git clone git@github.com:lmasello/oupa-api.git`
