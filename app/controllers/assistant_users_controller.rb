@@ -1,6 +1,5 @@
 class AssistantUsersController < ApplicationController
   def associate_elderly_user
-    byebug
     elderly_user = ElderlyUser.find_by(first_name: user_params[:first_name],
                                        last_name: user_params[:last_name])
     return render json: { errors: 'Wrong ElderlyUser id' },
