@@ -10,4 +10,8 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  resources :assistant_users, only: [] do
+    put :elderly_user, to: 'assistant_users#associate_elderly_user'
+  end
 end
