@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180524174621) do
+ActiveRecord::Schema.define(version: 20180526221423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20180524174621) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "elderly_user_id"
+    t.boolean "taken", default: false
     t.index ["elderly_user_id"], name: "index_personal_medicine_reminders_on_elderly_user_id"
   end
 
