@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
   def create
     if authenticated_user?
       token_data = AuthenticableEntity.generate_access_token(user)
+      user.update_attributes(device_token: session_params[:device_token]) if session_params[:device_token].present?
       render json: {
         access_token: token_data[:token], renew_id: token_data[:renew_id]
       }, status: :ok
@@ -49,7 +50,7 @@ class SessionsController < ApplicationController
   end
 
   def session_params
-    params.require(:session).permit(:email, :password)
+    params.require(:session).permit(:email, :password, :device_token)
   end
 
   def renew_token_params
