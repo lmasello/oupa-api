@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   end
 
   resources :personal_medicine_reminder, only: [:create, :index]
+  resources :emergency_alarm, only: [:create]
 end
