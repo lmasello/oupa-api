@@ -80,6 +80,11 @@ test:
 #
 production:
   <<: *default
-  database: oupa-api_production
-  username: oupa-api
-  password: <%= ENV['OUPA-API_DATABASE_PASSWORD'] %>
+#  database: oupa-api_production
+#  username: oupa-api
+#  password: <%= ENV['OUPA-API_DATABASE_PASSWORD'] %>
+  database: <%= ENV['RDS_DB_NAME'] %>
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_HOSTNAME'] %>
+  port: <%= ENV['RDS_PORT'] %>
