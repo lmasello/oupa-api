@@ -33,6 +33,7 @@ gem 'active_model_serializers'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'dotenv-rails', groups: [:development, :test]
 gem 'jwt'
 
 # Authentication
