@@ -17,3 +17,9 @@
 /yarn-error.log
 
 .byebug_history
+.env
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
