@@ -8,7 +8,7 @@ class EmergencyAlarmController < ApplicationController
       message_content = {
         to: assistant_user.device_token.to_s,
         data: {
-            message: "#{name} te está solicitando ayuda"
+            message: "#{name} pidió tu ayuda"
         }
       }
       HTTParty.post(firebase_url, body: message_content.to_json,
