@@ -16,6 +16,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    if current_user.update_attributes(update_params)
+      render json: current_user, status: :ok
+    else
+      render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def render_token(token_data)
@@ -27,6 +35,10 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation, :type, :first_name,
                                  :last_name, :device_token, :elderly_user_id)
+  end
+
+  def update_params
+    params.require(:user).permit(:device_token)
   end
 
   def correct_type
