@@ -17,9 +17,18 @@ class PersonalMedicineReminderController < ApplicationController
     end
   end
 
+  def update
+    medicine_reminder = PersonalMedicineReminder.find(params[:id])
+    if medicine_reminder.update(personal_medicine_reminder_params)
+      render json: medicine_reminder, status: :ok
+    else
+      render json: { errors: medicine_reminder.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def personal_medicine_reminder_params
-    params.require(:personal_medicine_reminder).permit(:name, :notes, :date, :time)
+    params.require(:personal_medicine_reminder).permit(:name, :notes, :date, :time, :taken)
   end
 end
