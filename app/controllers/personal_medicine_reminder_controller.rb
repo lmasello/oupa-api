@@ -1,6 +1,6 @@
 class PersonalMedicineReminderController < ApplicationController
   def index
-    render json: current_user.personal_medicine_reminder.where(date: Date.current)
+    render json: current_user.personal_medicine_reminder.where(date: Date.current).order(time: :asc)
   end
 
   def create
