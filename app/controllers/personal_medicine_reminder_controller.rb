@@ -1,6 +1,8 @@
 class PersonalMedicineReminderController < ApplicationController
   def index
-    render json: current_user.personal_medicine_reminder.where(date: Date.current).order(time: :asc)
+    render json: current_user.personal_medicine_reminder
+                             .where("date BETWEEN :beginning AND :end", beginning: Date.current.beginning_of_day,
+                                                                        end: Date.current.end_of_day).order(time: :asc)
   end
 
   def create
