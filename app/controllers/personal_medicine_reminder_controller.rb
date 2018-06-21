@@ -17,6 +17,11 @@ class PersonalMedicineReminderController < ApplicationController
     end
   end
 
+  def delete_all
+    current_user.personal_medicine_reminder.delete_all
+    head :no_content
+  end
+
   def update
     medicine_reminder = PersonalMedicineReminder.find(params[:id])
     if medicine_reminder.update(personal_medicine_reminder_params)
