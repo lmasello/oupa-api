@@ -16,6 +16,10 @@ Rails.application.routes.draw do
     put :elderly_user, to: 'assistant_users#associate_elderly_user'
   end
 
-  resources :personal_medicine_reminder, only: [:create, :index, :update]
+  resources :personal_medicine_reminder, only: [:create, :index, :update] do
+    collection do
+      delete :delete_all
+    end
+  end
   resources :emergency_alarm, only: [:create]
 end
