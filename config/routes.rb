@@ -21,5 +21,12 @@ Rails.application.routes.draw do
       delete :delete_all
     end
   end
+
   resources :emergency_alarm, only: [:create]
+
+  resources :measurements, only: [:create, :index, :update] do
+    collection do
+      delete :delete_all
+    end
+  end
 end
