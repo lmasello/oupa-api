@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180529180919) do
+ActiveRecord::Schema.define(version: 20180706030144) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "measurements", force: :cascade do |t|
+    t.integer "measurement_type", default: 0, null: false
+    t.text "notes"
+    t.float "value", null: false
+    t.datetime "date", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "elderly_user_id"
+    t.index ["elderly_user_id"], name: "index_measurements_on_elderly_user_id"
+  end
 
   create_table "personal_medicine_reminders", force: :cascade do |t|
     t.string "name"
