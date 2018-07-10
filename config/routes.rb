@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
 
   resources :emergency_alarm, only: [:create]
-
+  resources :contacts, only: [:create, :index, :update]
   resources :measurements, only: [:create, :index, :update] do
     collection do
       delete :delete_all
