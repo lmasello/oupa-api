@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     collection do
       patch :update
       get :logged_in
+      get :associated_oupas
       resources :sessions, only: [:create] do
         collection do
           post :renew
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
         end
       end
     end
+    resources :personal_medicine_reminder, only: [:index]
   end
 
   resources :assistant_users, only: [] do
