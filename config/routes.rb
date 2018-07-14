@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     collection do
       patch :update
       get :logged_in
+      get :associated_oupas
       resources :sessions, only: [:create] do
         collection do
           post :renew

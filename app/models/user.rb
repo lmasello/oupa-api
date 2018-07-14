@@ -7,7 +7,7 @@ class User < ApplicationRecord
   # Hooks
   before_validation :generate_verification_code, on: :create
 
-  enum types: [:ElderlyUser, :AssistantUser]
+  enum types: [:ElderlyUser, :AssistantUser, :DoctorUser]
 
   def generate_verification_code
     self.verification_code = AuthenticableEntity.verification_code
