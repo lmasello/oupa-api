@@ -1,6 +1,7 @@
 class ContactsController < ApplicationController
   def index
-    render json: current_user.contacts, status: :ok
+    user = params[:user_id].present? ? User.find(params[:user_id]) : current_user
+    render json: user.contacts, status: :ok
   end
 
   def create
