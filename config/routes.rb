@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :personal_medicine_reminder, only: [:create, :index, :update] do
     collection do
       delete :delete_all
+      post :alexa
     end
   end
 

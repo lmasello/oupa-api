@@ -1,4 +1,6 @@
 class PersonalMedicineReminderController < ApplicationController
+  skip_before_action :current_user, :authenticate_request, only: [:alexa]
+
   def index
     from = Date.current.beginning_of_day
     to = Date.current.end_of_day
@@ -34,6 +36,19 @@ class PersonalMedicineReminderController < ApplicationController
     else
       render json: { errors: medicine_reminder.errors.full_messages }, status: :unprocessable_entity
     end
+  end
+
+  def alexa
+    response = {
+      version: "1.0",
+      response: {
+        outputSpeech: {
+          type: "PlainText",
+          text: "La proxima pastilla es un Ibuprofeno de 600 miligramos a las 22 horas."
+        }
+      }
+    }.to_json
+    render json: response, status: :ok
   end
 
   private
