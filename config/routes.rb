@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     end
     resources :personal_medicine_reminder, only: [:index]
     resources :contacts, only: [:index]
+    resources :measurements, only: [:index]
   end
 
   resources :assistant_users, only: [] do
