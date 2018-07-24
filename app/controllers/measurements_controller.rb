@@ -1,7 +1,7 @@
 class MeasurementsController < ApplicationController
   def index
     user = params[:user_id].present? ? User.find(params[:user_id]) : current_user
-    render json: user.measurements, status: :ok
+    render json: user.measurements.order(created_at: :desc), status: :ok
   end
 
   def create
